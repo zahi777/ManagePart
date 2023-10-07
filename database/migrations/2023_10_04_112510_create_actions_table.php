@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user'); // Clé étrangère pour l'Utilisateur
             // Autres colonnes
             $table->timestamps();
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
@@ -30,6 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('actions', function (Blueprint $table) {
+            $table->dropForeign(['id_user']);
+        });
+        
         Schema::dropIfExists('actions');
     }
 };

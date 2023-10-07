@@ -23,8 +23,8 @@ return new class extends Migration
             // Autres colonnes
             $table->timestamps();
 
-            $table->foreign('id_prt')->references('id_prt')->on('partenaires');
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_prt')->references('id')->on('partenaires');
+            $table->foreign('id_user')->references('id')->on('users');
 
         });
     }
